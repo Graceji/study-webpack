@@ -18,3 +18,8 @@
               minimize: true,
             }
           }
+  3. 使用插件
+  - [contenthash:8]: 根据文件内容算出的8位Hash值。
+  - 从webpack4开始，extract-text-webpack-plugin 被 mini-css-extract-plugin 取代。
+
+  

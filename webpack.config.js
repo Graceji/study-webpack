@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
@@ -11,19 +12,32 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        // use: ['style-loader', 'css-loader?minimize'],
-        // use: ['style-loader', 'css-loader?{"minimize": true}'],
-        // use: ['style-loader', 'css-loader?minimize=true'],
+        // loader传参的集中方式
+        /**
+         *  use: ['style-loader', 'css-loader?minimize'],
+         *  use: ['style-loader', 'css-loader?{"minimize": true}'],
+         *  use: ['style-loader', 'css-loader?minimize=true'],
+         *  use: [
+              'style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  minimize: true,
+                },
+              },
+            ],
+        */
+        // 提取css文件
         use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              minimize: true,
-            },
-          },
+          MiniCssExtractPlugin.loader,
+          'css-loader',
         ],
       },
     ],
-  }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name]_[contenthash:8].css'
+    }),
+  ],
 };
