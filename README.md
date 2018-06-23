@@ -9,12 +9,12 @@
     每个Loader都可以通过URL querystring 的方式传入参数，例如 ?key=value&foo=bar，或者一个 JSON 对象，例如 ?{"key":"value","foo":"bar"}。
     也可以通过options配置。
     例如：
-        css-loader?minimize
-        css-loader?minimize=true
-        css-loader?{"minimize": true}
-        {
-          loader: 'css-loader',
-          options: {
-            minimize: true,
+        - css-loader?minimize
+        - css-loader?minimize=true
+        - css-loader?{"minimize": true}
+        - {
+            loader: 'css-loader',
+            options: {
+              minimize: true,
+            }
           }
-        }
