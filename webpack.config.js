@@ -7,4 +7,23 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './dist'),
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        // use: ['style-loader', 'css-loader?minimize'],
+        // use: ['style-loader', 'css-loader?{"minimize": true}'],
+        // use: ['style-loader', 'css-loader?minimize=true'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true,
+            },
+          },
+        ],
+      },
+    ],
+  }
 };
